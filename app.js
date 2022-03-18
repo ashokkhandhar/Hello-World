@@ -1,8 +1,18 @@
-const http = require('http');
+const express = require('express');
+const app = express();
 
-const server = http.createServer(function (req, res) {  
-    res.end('hello world!');
-})
+app.get('/', (req, res)=>{
+    let name = req.query['name'];
+    if(name) {
+        res.send(`Heloo ${name}!`);
+        console.log(`parameter name: ${name}`);
+    }
+    else {
+        res.send("Hello world!");
+        console.log("parameter name is empty!");
+    }
+});
 
-server.listen(3000);
-console.log('Server running at: ' + 3000);
+app.listen(3000, ()=>{
+    console.log('Server is live at port: ' + 3000);
+});
