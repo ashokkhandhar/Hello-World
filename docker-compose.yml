@@ -1,21 +1,27 @@
 version: "3"
 services:
-  mysql_server:
-    image: mysql:5.7
-    container_name: database
-    environment:
-      MYSQL_ALLOW_EMPTY_PASSWORD: 1
-      MYSQL_DATABASE: records
-      MYSQL_TABLE: logs
-  app:
-    depends_on:
-      - mysql_server
+  web:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: app
-    restart: on-failure
     ports:
-      - "3000:3000"
+     - "3000:3000"
     volumes:
-      - .:/app
+     - .:/code
+     - /code/node_modules
+    depends_on:
+     - mysql_server
+     - redis
+    restart: on-failure
+    container_name: app
+  mysql_server:
+    image: mysql:5.7
+    container_name: database
+    restart: on-failure
+    environment:
+      MYSQL_DATABASE: records
+      MYSQL_TABLE: logs
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
+  redis:
+    image: redis:latest
+    container_name: cache

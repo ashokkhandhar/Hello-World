@@ -10,7 +10,10 @@
   "author": "Ashok Khandhar",
   "license": "ISC",
   "dependencies": {
+    "connect-redis": "^6.1.3",
     "express": "^4.17.3",
-    "mysql": "^2.18.1"
+    "express-session": "^1.17.2",
+    "mysql": "^2.18.1",
+    "redis": "^4.0.6"
   }
 }
