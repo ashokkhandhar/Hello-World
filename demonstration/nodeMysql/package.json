@@ -1,0 +1,16 @@
+{
+  "name": "tester",
+  "version": "1.0.0",
+  "description": "testting software",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ashok Khandhar",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.3",
+    "mysql": "^2.18.1"
+  }
+}
